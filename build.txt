@@ -1,0 +1,3 @@
+displayName = Vanilla Boss Summon Recipes
+author = meinfr13nd
+version = 0.1
