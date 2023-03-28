@@ -48,7 +48,7 @@ namespace VanillaBossSummonRecipes.Tools
         }
 
 
-        public static void SendSlimeRainPacket(short invasionID)
+        public static void SendSlimeRainPacket()
         {
             ModPacket myPacket = createNoDataPacket(START_SLIME_RAIN);
             myPacket.Send();
@@ -69,6 +69,7 @@ namespace VanillaBossSummonRecipes.Tools
                     }
                 case START_SLIME_RAIN:
                     {
+                        ModContent.GetInstance<VanillaBossSummonRecipes>().Logger.InfoFormat("Starting slime rain");
                         StartSlimeRainLocal();
                         break;
                     }
