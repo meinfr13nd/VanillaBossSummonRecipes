@@ -1,25 +1,15 @@
-using Terraria;
-using Terraria.ID;
+using System.IO;
 using Terraria.ModLoader;
+using VanillaBossSummonRecipes.Tools;
 
 namespace VanillaBossSummonRecipes
 {
-	public class VanillaBossSummonRecipes : Mod
-	{
 
-        public override void AddRecipes()
+    public class VanillaBossSummonRecipes : Mod
+    {
+        public override void HandlePacket(BinaryReader reader, int whoAmI)
         {
-            Recipe recipe = Recipe.Create(ItemID.QueenSlimeCrystal, 1);
-            recipe.AddIngredient(ItemID.PinkGel, 20);
-            recipe.AddIngredient(ItemID.PlatinumCrown, 1);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.Register();
-
-            recipe = Recipe.Create(ItemID.QueenSlimeCrystal, 1);
-            recipe.AddIngredient(ItemID.PinkGel, 20);
-            recipe.AddIngredient(ItemID.GoldCrown, 1);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.Register();
+            PacketHandler.HandlePacket(reader, whoAmI);
         }
     }
 }
