@@ -37,33 +37,45 @@ namespace VanillaBossSummonRecipes.Recipes
 
         public override void AddRecipes()
         {
-            // queen slime summons
+            // Queen Slime summon
             Recipe.Create(ItemID.QueenSlimeCrystal)
                 .AddIngredient(ItemID.PinkGel, 20)
                 .AddIngredient(ItemID.Bone, 20)
                 .AddTile(TileID.MythrilAnvil)
                 .Register();
 
-            // golem summon
+            // Golem summon
             Recipe.Create(ItemID.LihzahrdPowerCell)
                 .AddRecipeGroup(nameof(ItemID.Torch), 10)
                 .AddIngredient(ItemID.LunarTabletFragment, 5)
                 .AddTile(TileID.AdamantiteForge)
                 .Register();
 
-
-            // truffle worm (duke fishron summon)
+            // truffle worm (Duke Fishron summon)
             Recipe.Create(ItemID.TruffleWorm)
                 .AddIngredient(ItemID.GlowingMushroom, 50)
                 .AddIngredient(ItemID.EnchantedNightcrawler, 1)
                 .AddTile(TileID.MythrilAnvil)
                 .Register();
 
-
             //  Prismatic Lacewing (Empress of Light summon)
             Recipe.Create(ItemID.EmpressButterfly)
                 .AddIngredient(ItemID.PixieDust, 50)
                 .AddRecipeGroup(RecipeGroupID.Butterflies, 1)
+                .Register();
+
+            //  guide voodoo doll (Wall of Flesh summon)
+            Recipe.Create(ItemID.GuideVoodooDoll)
+                .AddIngredient(ItemID.Hay, 25)
+                .AddIngredient(ItemID.Silk, 10)
+                .AddTile(TileID.WorkBenches)
+                .Register();
+
+            //  clothier voodoo doll (Skeletron summon)
+            Recipe.Create(ItemID.ClothierVoodooDoll)
+                .AddIngredient(ItemID.Hay, 25)
+                .AddIngredient(ItemID.Silk, 10)
+                .AddTile(TileID.WorkBenches)
                 .Register();
         }
     }
