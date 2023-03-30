@@ -13,13 +13,14 @@ using VanillaBossSummonRecipes.Tools;
 namespace VanillaBossSummonRecipes.Items
 {
 
-    public class OrphanedAlien : ModItem
+    public class MockMeteor : ModItem
     {
-        private static string NOT_PROGRESSED_ENOUGH = "This little one seems too scared of something in the jungle to move";
+        private static string NOT_IN_SKY = "This doesn't feel high enough to be convincing.";
+        private static string CTHULU_FORCE = "An evil force seems to be watching the skys.";
 
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("It seems like this little one just wants to go home");
+            Tooltip.SetDefault("Maybe meteors need friends too.");
         }
 
         public override void SetDefaults()
@@ -37,14 +38,20 @@ namespace VanillaBossSummonRecipes.Items
 
         public override bool CanUseItem(Player player)
         {
-            // After Golem is defeated and if the current invasian isn't martian madness
-            if (!NPC.downedGolemBoss)
+            // if eye/brain of Cthulu is defeated and the player is in the sky
+            if (!NPC.downedBoss2 && !NPC.downedBoss1)
             {
-                SystemMessageHandler.SendMessage(player, NOT_PROGRESSED_ENOUGH);
+                SystemMessageHandler.SendMessage(player, CTHULU_FORCE);
                 return false;
             }
 
-            return Main.invasionType != InvasionID.MartianMadness;
+            if (!player.ZoneSkyHeight)
+            {
+                SystemMessageHandler.SendMessage(player, NOT_IN_SKY);
+                return false;
+            }
+
+            return true;
         }
 
         public override bool? UseItem(Player player)
@@ -53,11 +60,11 @@ namespace VanillaBossSummonRecipes.Items
             {
                 if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
-                    PacketHandler.StartInvasionLocal(InvasionID.MartianMadness);
+                    PacketHandler.SpawnMeteorLocal();
                 }
                 else
                 {
-                    PacketHandler.SendInvasionPacket(InvasionID.MartianMadness);
+                    PacketHandler.SendSlimeRainPacket();
                 }
             }
 
@@ -67,19 +74,10 @@ namespace VanillaBossSummonRecipes.Items
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(ItemID.GlowingMushroom, 50)
-                .AddRecipeGroup(nameof(ItemID.Torch), 10)
-                .AddIngredient(ItemID.MeteoriteBar, 5)
-                .AddTile(TileID.Autohammer)
+                .AddRecipeGroup(nameof(ItemID.Torch), 100)
+                .AddIngredient(ItemID.StoneBlock, 100)
+                .AddTile(TileID.WorkBenches)
                 .Register();
-
-            CreateRecipe()
-                .AddIngredient(ItemID.MartianConduitPlating, 10)
-                .AddIngredient(ItemID.GlowingMushroom, 1)
-                .AddRecipeGroup(nameof(ItemID.Torch))
-                .AddTile(TileID.Autohammer)
-                .Register();
-
         }
     }
 }

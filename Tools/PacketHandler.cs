@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -12,6 +13,7 @@ namespace VanillaBossSummonRecipes.Tools
     {
         private const byte START_INVASION = 0;
         private const byte START_SLIME_RAIN = 1;
+        private const byte SPAWN_METEOR = 2;
 
         private static ModPacket createInvasionPacket(short invasionID)
         {
@@ -54,6 +56,13 @@ namespace VanillaBossSummonRecipes.Tools
             myPacket.Send();
         }
 
+
+        public static void SendSpawnMeteorPacket()
+        {
+            ModPacket myPacket = createNoDataPacket(SPAWN_METEOR);
+            myPacket.Send();
+        }
+
         public static void HandlePacket(BinaryReader reader, int whoAmI)
         {
             byte packetType = reader.ReadByte();
@@ -70,6 +79,12 @@ namespace VanillaBossSummonRecipes.Tools
                 case START_SLIME_RAIN:
                     {
                         ModContent.GetInstance<VanillaBossSummonRecipes>().Logger.InfoFormat("Starting slime rain");
+                        StartSlimeRainLocal();
+                        break;
+                    }
+                case SPAWN_METEOR:
+                    {
+                        ModContent.GetInstance<VanillaBossSummonRecipes>().Logger.InfoFormat("Spawn meteor");
                         StartSlimeRainLocal();
                         break;
                     }
@@ -100,6 +115,11 @@ namespace VanillaBossSummonRecipes.Tools
             {
                 Main.StartSlimeRain(announce: true);
             }
+        }
+
+        public static void SpawnMeteorLocal()
+        {
+            WorldGen.dropMeteor();
         }
     }
 }
