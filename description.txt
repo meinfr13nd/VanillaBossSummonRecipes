@@ -1,1 +1,14 @@
-Vanilla Boss Summon Recipes is a pretty cool mod, it does...this. Modify this file with a description of your mod.
+Vanilla Boss Summon Recipes adds summon items and crafting recipes for vanilla bosses/events that do not have summons as of 1.4.7 . The events/bosses are listed below see README at https://github.com/meinfr13nd/VanillaBossSummonRecipe for more details
+
+Events: 
+  - Slime Rain
+  - Martian Invaders
+  - Spawn Meteor
+
+Bosses:
+  - Wall of Flesh
+  - Queen Slime
+  - Golem
+  - Duke Fishron
+  - Empress of Light
+  - Skeletron
