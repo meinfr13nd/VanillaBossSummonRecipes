@@ -85,7 +85,7 @@ namespace VanillaBossSummonRecipes.Tools
                 case SPAWN_METEOR:
                     {
                         ModContent.GetInstance<VanillaBossSummonRecipes>().Logger.InfoFormat("Spawn meteor");
-                        StartSlimeRainLocal();
+                        SpawnMeteorLocal();
                         break;
                     }
                 default:
