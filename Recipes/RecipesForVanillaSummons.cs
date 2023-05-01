@@ -46,9 +46,9 @@ namespace VanillaBossSummonRecipes.Recipes
 
             // Golem summon
             Recipe.Create(ItemID.LihzahrdPowerCell)
-                .AddRecipeGroup(nameof(ItemID.Torch), 10)
+                .AddRecipeGroup(nameof(ItemID.Torch), 100)
                 .AddIngredient(ItemID.LunarTabletFragment, 5)
-                .AddTile(TileID.AdamantiteForge)
+                .AddTile(TileID.Autohammer)
                 .Register();
 
             // truffle worm (Duke Fishron summon)
@@ -62,6 +62,7 @@ namespace VanillaBossSummonRecipes.Recipes
             Recipe.Create(ItemID.EmpressButterfly)
                 .AddIngredient(ItemID.PixieDust, 50)
                 .AddRecipeGroup(RecipeGroupID.Butterflies, 1)
+                .AddTile(TileID.Autohammer)
                 .Register();
 
             //  guide voodoo doll (Wall of Flesh summon)
