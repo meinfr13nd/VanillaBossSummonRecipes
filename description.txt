@@ -1,4 +1,4 @@
-Vanilla Boss Summon Recipes adds summon items and crafting recipes for vanilla bosses/events that do not have summons as of 1.4.7 . The events/bosses are listed below see README at https://github.com/meinfr13nd/VanillaBossSummonRecipe for more details
+Vanilla Boss Summon Recipes adds summon items and crafting recipes for vanilla bosses/events that do not have summons as of 1.4.7 . The events/bosses are listed below see README at https://github.com/meinfr13nd/VanillaBossSummonRecipes for more details
 
 Events: 
   - Slime Rain
