@@ -17,11 +17,6 @@ namespace VanillaBossSummonRecipes.Items
     {
         private static string NOT_IN_SKY = "This doesn't feel high enough.";
 
-        public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("If I throw this from somewhere high, it'll be like its raining slime.");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 20;

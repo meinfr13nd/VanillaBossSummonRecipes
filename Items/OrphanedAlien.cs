@@ -17,11 +17,6 @@ namespace VanillaBossSummonRecipes.Items
     {
         private static string NOT_PROGRESSED_ENOUGH = "This little one seems too scared of something in the jungle to move";
 
-        public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("It seems like this little one just wants to go home");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 20;

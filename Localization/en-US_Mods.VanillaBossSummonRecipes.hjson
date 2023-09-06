@@ -1,0 +1,16 @@
+Items: {
+	SlimeBucket: {
+		Tooltip: If I throw this from somewhere high, it'll be like its raining slime.
+		DisplayName: Slime Bucket
+	}
+
+	OrphanedAlien: {
+		Tooltip: It seems like this little one just wants to go home
+		DisplayName: Orphaned Alien
+	}
+
+	MockMeteor: {
+		Tooltip: Maybe meteors need friends too.
+		DisplayName: Mock Meteor
+	}
+}

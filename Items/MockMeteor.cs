@@ -18,11 +18,6 @@ namespace VanillaBossSummonRecipes.Items
         private static string NOT_IN_SKY = "This doesn't feel high enough to be convincing.";
         private static string CTHULU_FORCE = "An evil force seems to be watching the skys.";
 
-        public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("Maybe meteors need friends too.");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 20;
