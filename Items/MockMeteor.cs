@@ -59,7 +59,7 @@ namespace VanillaBossSummonRecipes.Items
                 }
                 else
                 {
-                    PacketHandler.SpawnMeteorLocal();
+                    PacketHandler.SendSpawnMeteorPacket();
                 }
             }
 
