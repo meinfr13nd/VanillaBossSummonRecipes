@@ -14,6 +14,8 @@ namespace VanillaBossSummonRecipes.Tools
         private const byte START_INVASION = 0;
         private const byte START_SLIME_RAIN = 1;
         private const byte SPAWN_METEOR = 2;
+        private const byte START_RAIN = 3;
+        private const byte START_SANDSTORM = 4;
 
         private static ModPacket createInvasionPacket(short invasionID)
         {
@@ -43,7 +45,7 @@ namespace VanillaBossSummonRecipes.Tools
         }
 
 
-        public static void SendInvasionPacket(short invasionID)
+        private static void SendInvasionPacket(short invasionID)
         {
             ModPacket myPacket = createInvasionPacket(invasionID);
             myPacket.Send();
@@ -60,6 +62,27 @@ namespace VanillaBossSummonRecipes.Tools
         public static void SendSpawnMeteorPacket()
         {
             ModPacket myPacket = createNoDataPacket(SPAWN_METEOR);
+            myPacket.Send();
+        }
+
+
+        public static void SendSpawnMartianInvasionPacket()
+        {
+            ModPacket myPacket = createInvasionPacket(InvasionID.MartianMadness);
+            myPacket.Send();
+        }
+
+
+        public static void SendRainPacket()
+        {
+            ModPacket myPacket = createNoDataPacket(START_RAIN);
+            myPacket.Send();
+        }
+
+
+        public static void SendSandStormPacket()
+        {
+            ModPacket myPacket = createNoDataPacket(START_SANDSTORM);
             myPacket.Send();
         }
 
@@ -88,6 +111,14 @@ namespace VanillaBossSummonRecipes.Tools
                         SpawnMeteorLocal();
                         break;
                     }
+                case START_RAIN:
+                    ModContent.GetInstance<VanillaBossSummonRecipes>().Logger.InfoFormat("Starting rain");
+                    StartRainLocal();
+                    break;
+                case START_SANDSTORM:
+                    ModContent.GetInstance<VanillaBossSummonRecipes>().Logger.InfoFormat("Starting sandstorm");
+                    StartSandstormLocal();
+                    break;
                 default:
                     {
                         ModContent.GetInstance<VanillaBossSummonRecipes>().Logger.InfoFormat("Packet Type {0} not yet supported", packetType);
@@ -100,13 +131,18 @@ namespace VanillaBossSummonRecipes.Tools
             }
         }
 
-        public static void StartInvasionLocal(short invasionID)
+        private static void StartInvasionLocal(short invasionID)
         {
             if (Main.invasionType != invasionID)
             {
                 Main.StartInvasion(type: invasionID);
                 Main.invasionType = invasionID;
             }
+        }
+
+        private static void StartMartianInvasionLocal()
+        {
+            StartInvasionLocal(InvasionID.MartianMadness);
         }
 
         public static void StartSlimeRainLocal()
@@ -120,6 +156,22 @@ namespace VanillaBossSummonRecipes.Tools
         public static void SpawnMeteorLocal()
         {
             WorldGen.dropMeteor();
+        }
+
+        public static void StartRainLocal()
+        {
+            if (!Main.raining)
+            {
+                Main.StartRain();
+            }
+        }
+
+        public static void StartSandstormLocal()
+        {
+            if (!Sandstorm.Happening)
+            {
+                Sandstorm.StartSandstorm();
+            }
         }
     }
 }

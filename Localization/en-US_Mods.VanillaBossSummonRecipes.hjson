@@ -5,12 +5,22 @@ Items: {
 	}
 
 	OrphanedAlien: {
-		Tooltip: It seems like this little one just wants to go home
+		Tooltip: It seems like this little one just wants to go home.
 		DisplayName: Orphaned Alien
 	}
 
 	MockMeteor: {
 		Tooltip: Maybe meteors need friends too.
 		DisplayName: Mock Meteor
+	}
+
+	RainStick: {
+		DisplayName: Rain Stick
+		Tooltip: Using this will encourage the rain to fall.
+	}
+
+	SandyRainStick: {
+		DisplayName: Sandy Rain Stick
+		Tooltip: A Rain Stick ... but sandy?
 	}
 }

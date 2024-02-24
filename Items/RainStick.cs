@@ -1,45 +1,35 @@
-using Microsoft.Xna.Framework;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Terraria;
-using Terraria.Chat;
-using Terraria.GameContent.Creative;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using VanillaBossSummonRecipes;
 using VanillaBossSummonRecipes.Tools;
-
 
 namespace VanillaBossSummonRecipes.Items
 {
 
-    public class SlimeBucket : ModItem
+    public class RainStick : ModItem
     {
-        private static string NOT_IN_SKY = "This doesn't feel high enough.";
 
         public override void SetDefaults()
         {
             Item.width = 10;
             Item.height = 10;
             Item.maxStack = 20;
-            Item.value = 100;
+            Item.value = 10;
             Item.rare = ItemRarityID.Blue;
             Item.useAnimation = 30;
             Item.useTime = 30;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.consumable = true;
+            Item.consumable = false;
         }
 
         public override bool CanUseItem(Player player)
         {
-            // if in not in sky and not raining slime
-            if (!player.ZoneSkyHeight)
-            {
-                SystemMessageHandler.SendMessage(player, NOT_IN_SKY);
-                return false;
-            }
-
-            return !Main.slimeRain;
+            return !Main.raining;
         }
 
         public override bool? UseItem(Player player)
@@ -48,11 +38,11 @@ namespace VanillaBossSummonRecipes.Items
             {
                 if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
-                    PacketHandler.StartSlimeRainLocal();
+                    PacketHandler.StartRainLocal();
                 }
                 else
                 {
-                    PacketHandler.SendSlimeRainPacket();
+                    Main.StartRain();
                 }
             }
 
@@ -62,8 +52,11 @@ namespace VanillaBossSummonRecipes.Items
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(ItemID.EmptyBucket, 1)
-                .AddIngredient(ItemID.Gel, 100)
+                .AddRecipeGroup(RecipeGroupID.Wood, 10)
+                .AddIngredient(ItemID.BluePaint, 1)
+                .AddIngredient(ItemID.DeepPinkPaint, 1)
+                .AddIngredient(ItemID.DeepSkyBluePaint, 1)
+                .AddIngredient(ItemID.VioletPaint, 1)
                 .AddTile(TileID.WorkBenches)
                 .Register();
         }

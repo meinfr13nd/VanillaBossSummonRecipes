@@ -1,45 +1,31 @@
-using Microsoft.Xna.Framework;
-using System.Collections.Generic;
-using Terraria;
-using Terraria.Chat;
-using Terraria.GameContent.Creative;
+﻿using Terraria;
+using Terraria.GameContent.Events;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using VanillaBossSummonRecipes;
 using VanillaBossSummonRecipes.Tools;
-
 
 namespace VanillaBossSummonRecipes.Items
 {
 
-    public class SlimeBucket : ModItem
+    public class SandyRainStick : ModItem
     {
-        private static string NOT_IN_SKY = "This doesn't feel high enough.";
 
         public override void SetDefaults()
         {
             Item.width = 10;
             Item.height = 10;
             Item.maxStack = 20;
-            Item.value = 100;
-            Item.rare = ItemRarityID.Blue;
+            Item.value = 10;
+            Item.rare = ItemRarityID.Green;
             Item.useAnimation = 30;
             Item.useTime = 30;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.consumable = true;
+            Item.consumable = false;
         }
 
         public override bool CanUseItem(Player player)
         {
-            // if in not in sky and not raining slime
-            if (!player.ZoneSkyHeight)
-            {
-                SystemMessageHandler.SendMessage(player, NOT_IN_SKY);
-                return false;
-            }
-
-            return !Main.slimeRain;
+            return !Sandstorm.Happening;
         }
 
         public override bool? UseItem(Player player)
@@ -48,11 +34,11 @@ namespace VanillaBossSummonRecipes.Items
             {
                 if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
-                    PacketHandler.StartSlimeRainLocal();
+                    PacketHandler.StartSandstormLocal();
                 }
                 else
                 {
-                    PacketHandler.SendSlimeRainPacket();
+                    PacketHandler.SendSandStormPacket();
                 }
             }
 
@@ -62,9 +48,8 @@ namespace VanillaBossSummonRecipes.Items
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(ItemID.EmptyBucket, 1)
-                .AddIngredient(ItemID.Gel, 100)
-                .AddTile(TileID.WorkBenches)
+                .AddRecipeGroup(RecipeGroupID.Sand, 10)
+                .AddIngredient<Items.RainStick>()
                 .Register();
         }
     }

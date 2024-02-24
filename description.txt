@@ -1,9 +1,9 @@
-Vanilla Boss Summon Recipes adds summon items and crafting recipes for vanilla bosses/events that do not have summons as of 1.4.7 . The events/bosses are listed below see README at https://github.com/meinfr13nd/VanillaBossSummonRecipes for more details
+Vanilla Boss Summon Recipes adds summon items and crafting recipes for vanilla bosses/events/weather that do not have summons as of 1.4.7 . The events/bosses/weather are listed below see README at https://github.com/meinfr13nd/VanillaBossSummonRecipes for more details
 
 Events: 
-  - Slime Rain
-  - Martian Invaders
-  - Spawn Meteor
+  - Slime Rain (Slim Bucket)
+  - Martian Invaders (Orphaned Alien)
+  - Spawn Meteor (Mock Meteor)
 
 Bosses:
   - Wall of Flesh
@@ -12,3 +12,7 @@ Bosses:
   - Duke Fishron
   - Empress of Light
   - Skeletron
+
+Weather:
+  - Rain (Rain Stick)
+  - Sandstorm (Sandy Rain Stick)

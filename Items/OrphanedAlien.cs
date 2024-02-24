@@ -19,14 +19,14 @@ namespace VanillaBossSummonRecipes.Items
 
         public override void SetDefaults()
         {
-            Item.width = 20;
-            Item.height = 20;
+            Item.width = 10;
+            Item.height = 10;
             Item.maxStack = 20;
             Item.value = 100;
             Item.rare = ItemRarityID.Blue;
             Item.useAnimation = 30;
             Item.useTime = 30;
-            Item.useStyle = ItemUseStyleID.HoldUp;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.consumable = true;
         }
 
@@ -48,11 +48,11 @@ namespace VanillaBossSummonRecipes.Items
             {
                 if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
-                    PacketHandler.StartInvasionLocal(InvasionID.MartianMadness);
+                    PacketHandler.SendSpawnMartianInvasionPacket();
                 }
                 else
                 {
-                    PacketHandler.SendInvasionPacket(InvasionID.MartianMadness);
+                    PacketHandler.SendSpawnMartianInvasionPacket();
                 }
             }
 
